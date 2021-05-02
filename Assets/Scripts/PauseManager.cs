@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//This code helps us to manage the pause menu
+
 public class PauseManager : MonoBehaviour
 {
     public GameObject PauseCanvas;
@@ -12,6 +14,7 @@ public class PauseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //We start making false the pause canvas
         isPaused=false;
         PauseCanvas.SetActive(false);
     }
@@ -19,13 +22,15 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //As we use the same button to pause and restart the game, we need to be sure that the user has won
+        //to avoid having mistakes with the pause menu
         if(!MoveCube.won){
             if ((Input.GetKeyUp(KeyCode.JoystickButton0))|| (Input.GetKeyUp(KeyCode.P))){            
                 Pause();
             }
         }
         
-        
+        //If it is paused, we can Rstart, Quit and see the instructions of the game
         if(isPaused){
             //B
             if (Input.GetKeyUp(KeyCode.JoystickButton13) || (Input.GetKeyUp(KeyCode.Q) )){
@@ -42,11 +47,9 @@ public class PauseManager : MonoBehaviour
              if (Input.GetKeyUp(KeyCode.JoystickButton14) || (Input.GetKeyUp(KeyCode.P) )){
                 Pause();
             }
-
         }
-        
-        
     }
+    
 
     public void Pause(){
         isPaused=!isPaused;
