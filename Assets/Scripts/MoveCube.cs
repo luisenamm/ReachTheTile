@@ -34,7 +34,7 @@ public class MoveCube : MonoBehaviour
 
     private bool canRotate;
     Vector3 oldPosition;
-    private bool won;
+    public static bool won;
     public GameObject winnerScene;
     public GameObject MuteCanvas;
 
@@ -72,7 +72,7 @@ public class MoveCube : MonoBehaviour
 
             if(won){
                         
-                if((Input.GetKeyUp(KeyCode.JoystickButton0))) Restart();
+                if((Input.GetKeyUp(KeyCode.JoystickButton0)) ||Input.GetKeyUp(KeyCode.R)) Restart();
 
             }
 

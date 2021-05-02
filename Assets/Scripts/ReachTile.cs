@@ -11,7 +11,6 @@ public class ReachTile : MonoBehaviour
     void Start()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
-        Debug.Log(tiles.Length);
         index= (int) Random.Range(0, tiles.Length);
         colorTile=tiles[index].GetComponent<Renderer>().material.GetColor("_Color");
         tiles[index].GetComponent<Renderer>().material.SetColor("_Color", Color.red);

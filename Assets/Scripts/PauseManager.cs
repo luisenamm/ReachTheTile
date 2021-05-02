@@ -9,19 +9,22 @@ public class PauseManager : MonoBehaviour
     public static bool isPaused;
 
     public MoveCube cube;
-    public string SceneName;
     // Start is called before the first frame update
     void Start()
     {
+        isPaused=false;
         PauseCanvas.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.JoystickButton0) || (Input.GetKeyUp(KeyCode.P) )){
-            Pause();
+        if(!MoveCube.won){
+            if ((Input.GetKeyUp(KeyCode.JoystickButton0))|| (Input.GetKeyUp(KeyCode.P))){            
+                Pause();
+            }
         }
+        
         
         if(isPaused){
             //B
@@ -54,9 +57,5 @@ public class PauseManager : MonoBehaviour
             PauseCanvas.SetActive(false);
             Time.timeScale=1;
         }
-    }
-
-    public void LoadScene(){
-         SceneManager.LoadScene(SceneName);
     }
 }
